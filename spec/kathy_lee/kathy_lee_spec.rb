@@ -112,5 +112,39 @@ describe "kathy_lee" do
     end
     
   end
+  
+  describe "sweatshop" do
+    
+    it "should return an array of new objects" do
+      results = KathyLee.sweatshop(:user)
+      results.size.should == 2
+      results.each do |user|
+        user.should be_kind_of(User)
+        user.should be_new_record
+        user.id.should be_nil
+        user.name.should == 'Mark Bates'
+        user.email.should == 'foo@example.com'
+        user.bio.should == 'This is my bio!'
+      end
+    end
+    
+  end
+  
+  describe "sweatshop!" do
+    
+    it "should return an array of new objects" do
+      results = KathyLee.sweatshop!(:user, 3)
+      results.size.should == 3
+      results.each do |user|
+        user.should be_kind_of(User)
+        user.should_not be_new_record
+        user.id.should_not be_nil
+        user.name.should == 'Mark Bates'
+        user.email.should == 'foo@example.com'
+        user.bio.should == 'This is my bio!'
+      end
+    end
+    
+  end
 
 end

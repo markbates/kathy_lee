@@ -43,6 +43,20 @@ class KathyLee
     self.factories[factory_name.to_sym] = KathyLee::Definition.new(factory_name, attributes, &block)
   end
   
+  def sweatshop(factory_name, count = 2)
+    results = []
+    count.times do
+      results << self.build(factory_name)
+    end
+    return results
+  end
+  
+  def sweatshop!(factory_name, count = 2)
+    results = self.sweatshop(factory_name, count)
+    results.each {|x| x.save!}
+    return results
+  end
+  
   class << self
     
     def method_missing(sym, *args, &block)
