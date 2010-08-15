@@ -17,6 +17,10 @@ class KathyLee::Attributes::Binding
     self.results.merge!(self.attributes)
   end
   
+  def fake(name)
+    KathyLee::Fakes.execute(name)
+  end
+  
   def method_missing(sym, args = nil, &block)
     self.results[sym] = args unless args.nil?
     if block_given?

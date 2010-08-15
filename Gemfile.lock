@@ -6,6 +6,7 @@ GEM
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    faker (0.3.1)
     gemstub (2.0.0.pre3)
       activesupport
       genosaurus
@@ -31,6 +32,7 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport
+  faker
   gemstub (>= 2.0.0.pre)
   rake
   rspec (>= 2.0.0.beta.19)

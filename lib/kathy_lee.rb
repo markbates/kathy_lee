@@ -1,8 +1,9 @@
 require 'singleton'
 require 'active_support'
+require 'faker'
 
 path = File.join(File.dirname(__FILE__), 'kathy_lee')
 
-%w{kathy_lee definition definition/binding attributes attributes/binding}.each do |file|
+%w{kathy_lee definition definition/binding attributes attributes/binding fakes}.each do |file|
   require File.expand_path(File.join(path, file))
 end

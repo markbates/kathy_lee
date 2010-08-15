@@ -17,13 +17,14 @@ Bundler.require
 Gemstub.test_framework = :rspec
 
 Gemstub.gem_spec do |s|
-  # s.version = '0.0.1'
-  # s.rubyforge_project = 'kathy_lee'
+  s.version = '0.1.0'
+  s.rubyforge_project = 'magrathea'
   s.add_dependency('activesupport')
-  # s.email = ''
-  # s.homepage = ''
+  s.add_dependency('faker')
+  s.email = 'mark+kathylee@markbates.com'
+  s.homepage = 'http://www.metabates.com'
 end
 
 Gemstub.rdoc do |rd|
-  rd.title = 'kathy_lee'
+  rd.title = 'Kathy Lee'
 end

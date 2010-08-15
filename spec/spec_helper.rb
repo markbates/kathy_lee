@@ -17,11 +17,15 @@ Rspec.configure do |config|
   end
   
   config.before(:each) do
-    
+    @old_list = fakes.list.dup
   end
   
   config.after(:each) do
-    
+    fakes.list = @old_list
   end
   
+end
+
+def fakes
+  KathyLee::Fakes.instance
 end

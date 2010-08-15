@@ -1,3 +1,4 @@
+# Used to evaluate a KathyLee::Definition in it's own 'space' (binding)
 class KathyLee::Definition::Binding
   
   attr_accessor :options
