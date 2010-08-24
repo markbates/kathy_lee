@@ -16,12 +16,13 @@ class KathyLee::Definition::Binding
   end
   
   def has_one(factory, options = {}, &block)
-    self.has_ones[factory.to_sym] = {:options => options, :code_block => block, :klass => self.options.delete(factory.to_sym)}
+    self.has_ones[factory.to_sym] = {:options => options, :code_block => block, 
+                                     :klass => self.options.delete(factory.to_sym)}
   end
   
   def has_many(factory, options = {}, &block)
     options = {:size => 2}.merge(options)
-    self.has_manys[factory.to_sym] = {:options => options, :code_block => block, :klass => self.options.delete(factory.to_sym)}
+    self.has_manys[factory.to_sym] = KathyLee::Definition::HasMany.new(factory.to_sym, {:options => options, :code_block => block, :klass => self.options.delete(factory.to_sym)})
   end
   
   def process!
@@ -49,21 +50,8 @@ class KathyLee::Definition::Binding
   
   def handle_has_manys
     self.has_manys.each do |factory, h|
-      (h[:options].delete(:size) || 2).times do
-        if h[:klass]
-          self.result.send("#{factory}=", h[:klass])
-        else
-          if self.result.send("#{factory}").nil?
-            self.result.send("#{factory}=", [])
-          end
-          if h[:code_block]
-            b = KathyLee::Definition::Binding.new(factory, h[:options], &h[:code_block])
-            b.process!
-            self.result.send("#{factory}") << b.result
-          else
-            self.result.send("#{factory}") << KathyLee.build(factory, h[:options])
-          end
-        end
+      h.build.each do |obj|
+        self.result.send("#{factory}") << obj
       end
     end
   end
