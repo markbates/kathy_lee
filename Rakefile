@@ -17,7 +17,7 @@ Bundler.require
 Gemstub.test_framework = :rspec
 
 Gemstub.gem_spec do |s|
-  s.version = '0.2.0'
+  s.version = '0.2.1'
   s.rubyforge_project = 'magrathea'
   s.add_dependency('activesupport')
   s.add_dependency('dummy')

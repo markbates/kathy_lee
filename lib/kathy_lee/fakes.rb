@@ -106,6 +106,16 @@ KathyLee::Fakes.alias(:full_name, :name)
   eval("KathyLee::Fakes.add(:#{m}) {|*args| Dummy::PhoneNumber.#{m}}")
 end
 
+KathyLee::Fakes.add(:domain) do |*args|
+  hosts = %w{example google yahoo mac apple hotmail}
+  extensions = %w{com co.uk net info mobi me org edu gov}
+  "#{hosts[rand(hosts.length)]}.#{extensions[rand(extensions.length)]}"
+end
+
+KathyLee::Fakes.add(:email) do |*args|
+  "#{KathyLee::Fakes.execute(:username)}_#{rand(9999)}@#{KathyLee::Fakes.execute(:domain)}"
+end
+
 # %w{first_name last_name name prefix suffix}.each do |m|
 #   eval("KathyLee::Fakes.add(:#{m}) {|*args| Faker::Name.#{m}(*args)}")
 # end

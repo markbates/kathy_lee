@@ -15,6 +15,16 @@ describe KathyLee::Fakes do
     a1[:email].should_not == a2[:email]
   end
   
+  describe "email" do
+    
+    it "should make an email" do
+      10.times do
+        puts fakes.execute(:email)
+      end
+    end
+    
+  end
+  
   describe 'execute' do
     
     it 'should execute a registered proc' do
