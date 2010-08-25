@@ -2,15 +2,15 @@
 
 Gem::Specification.new do |s|
   s.name = %q{kathy_lee}
-  s.version = "0.1.0.20100824095928"
+  s.version = "0.2.0.20100825102713"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["markbates"]
-  s.date = %q{2010-08-24}
+  s.date = %q{2010-08-25}
   s.description = %q{kathy_lee was developed by: markbates}
   s.email = %q{mark+kathylee@markbates.com}
   s.extra_rdoc_files = ["README", "LICENSE"]
-  s.files = ["lib/kathy_lee/attributes/binding.rb", "lib/kathy_lee/attributes.rb", "lib/kathy_lee/definition/binding.rb", "lib/kathy_lee/definition/has_many.rb", "lib/kathy_lee/definition/has_one.rb", "lib/kathy_lee/definition/relationship.rb", "lib/kathy_lee/definition.rb", "lib/kathy_lee/fakes.rb", "lib/kathy_lee/kathy_lee.rb", "lib/kathy_lee.rb", "README", "LICENSE"]
+  s.files = ["lib/generators/kathy_lee/model/model_generator.rb", "lib/generators/kathy_lee/model/templates/fixtures.rb", "lib/generators/kathy_lee.rb", "lib/kathy_lee/attributes/binding.rb", "lib/kathy_lee/attributes.rb", "lib/kathy_lee/definition/binding.rb", "lib/kathy_lee/definition/has_many.rb", "lib/kathy_lee/definition/has_one.rb", "lib/kathy_lee/definition/relationship.rb", "lib/kathy_lee/definition.rb", "lib/kathy_lee/fakes.rb", "lib/kathy_lee/kathy_lee.rb", "lib/kathy_lee.rb", "README", "LICENSE"]
   s.homepage = %q{http://www.metabates.com}
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{magrathea}

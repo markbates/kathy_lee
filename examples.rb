@@ -66,13 +66,15 @@ post.user.bio # => 'This is my bio!'
 
 KathyLee.define(:user_with_posts, :attributes_for => :user) do
   has_many :posts, :size => 2
-  has_one :blog do |user|
+  
+  has_one :blog do
     blog = Blog.new
-    blog.title = 'My Title'
+    blog.title = "My Title: #{parent.name}"
     blog
   end
   
   user = User.new(options)
+  user.posts = []
   user
 end
 

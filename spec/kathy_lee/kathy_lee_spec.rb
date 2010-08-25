@@ -101,7 +101,7 @@ describe "kathy_lee" do
       user.bio.should == 'This is my bio!'
       blog = user.blog
       blog.should be_kind_of(Blog)
-      blog.title.should == 'My Title'
+      blog.title.should == 'My Title: Mark Bates'
       blog.id.should_not be_nil
       blog.should_not be_new_record
       user.posts.size.should == 2
@@ -116,7 +116,7 @@ describe "kathy_lee" do
   describe "sweatshop" do
     
     it "should return an array of new objects" do
-      results = KathyLee.sweatshop(:user)
+      results = KathyLee.sweatshop(:user, 2)
       results.size.should == 2
       results.each do |user|
         user.should be_kind_of(User)

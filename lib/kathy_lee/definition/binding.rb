@@ -1,13 +1,16 @@
 # Used to evaluate a KathyLee::Definition in it's own 'space' (binding)
 class KathyLee::Definition::Binding
   
+  attr_accessor :factory_name
   attr_accessor :options
   attr_accessor :code_block
   attr_accessor :result
   attr_accessor :has_ones
   attr_accessor :has_manys
+  attr_accessor :parent
   
   def initialize(factory_name, attributes = {}, &block)
+    self.factory_name = factory_name
     attrib_name = attributes.delete(:attributes_for) || factory_name.to_sym
     self.options = (KathyLee.attributes(attrib_name) || {}).merge(attributes)
     self.code_block = block
@@ -39,6 +42,16 @@ class KathyLee::Definition::Binding
       else
         if h[:code_block]
           b = KathyLee::Definition::Binding.new(factory, h[:options], &h[:code_block])
+          # b.send(:eval, %{
+          #   def #{self.factory_name}=(x)
+          #     @__#{self.factory_name} = x
+          #   end
+          #   def #{self.factory_name}
+          #     @__#{self.factory_name}
+          #   end
+          # })
+          # b.send("#{self.factory_name}=", self.result)
+          b.parent = self.result
           b.process!
           self.result.send("#{factory}=", b.result)
         else

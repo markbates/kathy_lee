@@ -5,7 +5,7 @@ require 'dummy'
 # A monkey patch for dummy:
 class Array
   def rand
-    self.random_element
+    self[Kernel.rand(self.length)]
   end
 end
 
@@ -16,3 +16,5 @@ path = File.join(File.dirname(__FILE__), 'kathy_lee')
    definition/has_one definition/has_many attributes attributes/binding fakes}.each do |file|
   require File.expand_path(File.join(path, file))
 end
+
+# require File.join(File.dirname(__FILE__), 'generators', 'kathy_lee')
